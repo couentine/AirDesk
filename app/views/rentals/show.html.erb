@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rental.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rental.description %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @rental.picture %>
+</p>
+
+<p>
+<strong>City:</strong>
+<%= @rental.city %>
+</p>
+
+<% if admin_signed_in? || owner_signed_in? %>
+<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<%end%>
+<%= link_to 'Back', rentals_path %>

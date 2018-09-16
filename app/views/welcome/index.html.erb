@@ -1,0 +1,17 @@
+
+
+<% if owner_signed_in? %>
+<h1>Welcome to your Owner Page </h1>
+<% elsif buyer_signed_in? %>
+<h1>Get Ready to find a Desk </h1>
+<% elsif admin_signed_in? %>
+<h1> ADMIN PAGE </h1>
+<%else%>
+<h1>Find a Desk</h1>
+<%= link_to "Sign up", new_buyer_registration_path, :class => 'navbar-link'  %> |
+<%= link_to "Login", new_buyer_session_path, :class => 'navbar-link'  %>
+<h1>Rent a Desk</h1>
+<%= link_to "Sign up", new_owner_registration_path, :class => 'navbar-link'  %> |
+<%= link_to "Login", new_owner_session_path, :class => 'navbar-link'  %>
+
+<%end%>
