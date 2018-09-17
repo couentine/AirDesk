@@ -5,6 +5,11 @@ class RentalsController < ApplicationController
   # GET /rentals.json
   def index
     @rentals = Rental.all
+  if params[:search]
+    @rentals = Rental.search(params[:search]).order("created_at DESC")
+  else
+    @rentals = Rental.all.order("created_at DESC")
+  end
   end
 
   # GET /rentals/1

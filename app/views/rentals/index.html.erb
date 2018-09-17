@@ -2,6 +2,21 @@
 
 <h1>Rentals</h1>
 
+
+<%= form_tag(rentals_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by town" %>
+    <%= submit_tag "Search", :name => nil %>
+    <% if @rentals.blank? %>
+  <h4>There are no rentals availible in this town<%= params[:search] %>.</h4>
+<% end %>
+<% end %>
+
+
+
+
+
+
+
 <table>
   <thead>
     <tr>
