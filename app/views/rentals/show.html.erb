@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1><center>
+
   <%= @rental.name %>
+</center></h1>
+
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@rental.picture_url, width: 400) if @rental.picture.present? %>
 </p>
 
 <p>
   <strong>Description:</strong>
   <%= @rental.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @rental.picture %>
 </p>
 
 <p>

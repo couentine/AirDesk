@@ -5,9 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th>Title</th>
       <th>Picture</th>
+      <th>Description</th>
       <th>City</th>
 
       <th colspan="3"></th>
@@ -18,8 +18,8 @@
     <% @rentals.each do |rental| %>
       <tr>
         <td><%= rental.name %></td>
+        <td><%= image_tag rental.picture_url, width: '100%' if rental.picture.present? %></td>
         <td><%= rental.description %></td>
-        <td><%= rental.picture %></td>
         <td><%= rental.city %></td>
         <td><%= link_to 'Show', rental %></td>
           <% if admin_signed_in? || owner_signed_in? %>
