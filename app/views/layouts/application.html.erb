@@ -21,13 +21,24 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">AirDesk</a>
+
         </div>
+
+
+
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li ><a href="/rentals">Find a Desk</a></li>
+        <li>
+        <div class="search">
+                <%= form_tag(rentals_path, :method => "get", id: "search-form") do %>
+                    <%= text_field_tag :search, params[:search], placeholder: "Search a desk by town" %>
+                    <%= submit_tag "Search", :name => nil %>
+             <% end %>
+        </div>
+</li>
+        <li>
+        <div class="navbar-text pull-right">
 
-
-        <p class="navbar-text pull-right">
           <% if admin_signed_in? %>
           Logged in as <strong><%= current_admin.email %></strong>.
           <%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %> |
@@ -40,15 +51,10 @@
             Logged in as <strong><%= current_owner.email %></strong>.
             <%= link_to 'Edit profile', edit_owner_registration_path, :class => 'navbar-link' %> |
             <%= link_to "Logout", destroy_owner_session_path, method: :delete, :class => 'navbar-link'  %>
-            <% else %>
-            Become a Member
-            <%= link_to "Sign up", new_buyer_registration_path, :class => 'navbar-link'  %> |
-            <%= link_to "Login", new_buyer_session_path, :class => 'navbar-link'  %>
-            Rent a Desk
-            <%= link_to "Sign up", new_owner_registration_path, :class => 'navbar-link'  %> |
-            <%= link_to "Login", new_owner_session_path, :class => 'navbar-link'  %>
     <% end %>
-</p>
+  </div>
+</li>
+
       </ul>
     </div>
   </div>
