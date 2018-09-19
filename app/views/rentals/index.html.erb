@@ -4,7 +4,7 @@
 
 
 <% if @rentals.blank? %>
-<h4>There are no rentals availible in this town: <%= params[:search] %>.</h4>
+<h4>There are no rentals availible in this town: <b><%= params[:search] %></b>.</h4>
 
 <%else%>
 <table>
@@ -23,7 +23,11 @@
     <% @rentals.each do |rental| %>
       <tr>
         <td><%= rental.name %></td>
-        <td><%= image_tag rental.picture_url, width: '100%' if rental.picture.present? %></td>
+        <%if rental.picture.present?%>
+        <td><%= image_tag rental.picture_url, width: '50%' %></td>
+        <%else%>
+        <td><%= image_tag("default.jpg", width: '50%') %></td>
+        <%end%>
         <td><%= rental.description %></td>
         <td><%= rental.city %></td>
         <td><%= link_to 'Show', rental %></td>
