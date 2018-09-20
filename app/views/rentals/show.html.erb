@@ -19,10 +19,19 @@
 <strong>City:</strong>
 <%= @rental.city %>
 </p>
-<p>by: <%= @rental.owner.try(:email) %></p>
+<strong> Email: </strong><button onclick="myFunction()">Click me</button> <p id="demo"></p>
+
 
 
 <% if admin_signed_in? || owner_signed_in? %>
 <%= link_to 'Edit', edit_rental_path(@rental) %> |
 <%end%>
 <%= link_to 'Back', rentals_path %>
+
+<p><%= link_to 'Destroy', @rental, method: :delete, data: { confirm: 'Are you sure?' } %></p> 
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "<%= @rental.owner.try(:email) %>";
+}
+</script>

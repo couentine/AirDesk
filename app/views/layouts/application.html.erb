@@ -53,11 +53,11 @@
     <% end %>
   </div>
 </li>
-
+<% if owner_signed_in? %>
 <li >
 <%= link_to 'Profile', users_show_path %>
 </li>
-
+<%end%>
       </ul>
     </div>
   </div>

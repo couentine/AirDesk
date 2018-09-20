@@ -2,6 +2,8 @@
 
 <%= render 'form', rental: @rental %>
 
-<td><%= link_to 'Destroy', @rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
 <%= link_to 'Show', @rental %> |
 <%= link_to 'Back', rentals_path %>
+
+<p><%= link_to 'Destroy', @rental, method: :delete, data: { confirm: 'Are you sure?' } %></p> 
