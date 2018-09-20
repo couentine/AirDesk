@@ -19,6 +19,8 @@
 <strong>City:</strong>
 <%= @rental.city %>
 </p>
+<p>by: <%= @rental.owner.try(:email) %></p>
+
 
 <% if admin_signed_in? || owner_signed_in? %>
 <%= link_to 'Edit', edit_rental_path(@rental) %> |

@@ -5,6 +5,7 @@ class CreateRentals < ActiveRecord::Migration[5.1]
       t.text :description
       t.string :picture
       add_column :rentals, :city, :string
+      t.references :owner, foreign_key: true
 
       t.timestamps
     end

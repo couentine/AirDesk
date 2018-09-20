@@ -29,7 +29,8 @@ class RentalsController < ApplicationController
   # POST /rentals
   # POST /rentals.json
   def create
-    @rental = Rental.new(rental_params)
+  @rental = current_owner.rentals.create(rental_params)
+
 
     respond_to do |format|
       if @rental.save
