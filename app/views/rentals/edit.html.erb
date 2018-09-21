@@ -1,7 +1,8 @@
 <h1>Editing Rental</h1>
 
+<% if (owner_signed_in? && (current_owner.id == @rental.owner_id)) || admin_signed_in?%>
 <%= render 'form', rental: @rental %>
-
+<%end%>
 
 <%= link_to 'Show', @rental %> |
 <%= link_to 'Back', rentals_path %>

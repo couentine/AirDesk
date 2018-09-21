@@ -1,9 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<center>
+<script type="text/javascript">
+  ( function() {
+    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+    var unit = {"calltype":"async[2]","publisher":"couentine","width":728,"height":90,"sid":"Chitika Default"};
+    var placement_id = window.CHITIKA.units.length;
+    window.CHITIKA.units.push(unit);
+    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+}());
+</script>
+<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+
+</center>
+
 <h1><center>
 
   <%= @rental.name %>
 </center></h1>
+
 
 <p>
   <strong>Picture:</strong>
@@ -23,12 +38,13 @@
 
 
 
-<% if admin_signed_in? || owner_signed_in? %>
-<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<% if (owner_signed_in? && (current_owner.id == @rental.owner_id)) || admin_signed_in?%>
+<%= link_to 'Edit', edit_rental_path(@rental) %> | <%= link_to 'Destroy', @rental, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%end%>
-<%= link_to 'Back', rentals_path %>
 
-<p><%= link_to 'Destroy', @rental, method: :delete, data: { confirm: 'Are you sure?' } %></p> 
+<p><%= link_to 'Back', rentals_path %></p>
+
+
 
 <script>
 function myFunction() {
